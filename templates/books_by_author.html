@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block head_content %}
+  <title>{{author.nick_name}} | Books</title>
+{% endblock head_content %}
+
+{% block content %}
+  <h3 style="text-align: center; margin-top: 8px">
+    Books Written by: {{ author.nick_name }}
+  </h3>
+  <div class="container px-4 px-lg-5 mt-5">
+    <div
+      class="
+        row
+        gx-4 gx-lg-5
+        row-cols-2 row-cols-md-3 row-cols-xl-4
+        justify-content-center
+      "
+    >
+  {% for book in books %}
+    {% include 'card.html' %}
+  {% endfor %}
+    </div>
+  </div>
+  
+{% endblock content %}
+

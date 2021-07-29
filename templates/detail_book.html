@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block head_content %}
+<title>Detail | {{ book.title }}</title>
+{% endblock head_content %} {% block content %}
+<!-- Product section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+        <img
+          class="card-img-top mb-5 mb-md-0"
+          src="{{ book.picture.url }}"
+          alt="..."
+          style = "width: 70%"
+        />
+      </div>
+      <div class="col-md-6">
+        <div class="fs-5"><strong>By: </strong> {% for author in book.authors.all %}
+          {{author.nick_name}}
+        {% endfor %}</div>
+        <h1 class="display-5 fw-bolder">{{book.title}}</h1>
+        <div class="fs-5">
+          <strong>Price: </strong>$<span>{{book.price}}</span> COP
+        </div>
+        <p class="fs-5">
+          <strong>Plot: </strong>{{book.description}}
+        </p>
+        <div class="fs-5">
+          <strong>ISBN: </strong><span>{{book.isbn}}</span>
+        </div>
+        <div class="fs-5">
+          <strong>Stock: </strong><span>{{book.stock}}</span>
+        </div>
+        <div class="fs-5">
+          <strong>Release: </strong><span>{{book.release_date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

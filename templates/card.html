@@ -1,0 +1,30 @@
+<div class="col mb-5">
+  <div class="card h-100">
+    <!-- Product image-->
+    <img class="card-img-top p-3" src="{{ book.picture.url }}" title="{{ book.title}}" />
+    <!-- Product details-->
+    <div class="card-body p-4">
+      <div class="text-center">
+        <!-- Product name-->
+        <h5 title="{{ book.title}}">{% if book.title|length < 15 %}{{ book.title}}{% else %}{{ book.title|truncatechars:18 }}{% endif %}</h5>
+        <!-- Product price-->
+        <strong>$ {{ book.price }} COP</strong>
+        <br>
+        By:
+        <h6 style="color: #212529;">
+          <ul style="list-style: none; padding: 0px;">
+          {% for author in  book.authors.all%}
+            <li style="text-decoration: none;margin:auto;"><a href="{% url 'authors:books_by' author.pk %}" style="color: #212529;">{{ author.nick_name }}</a></li>
+          {% endfor %}
+          <ul>
+        </h6>
+      </div>
+    </div>
+    <!-- Product actions-->
+    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+      <div class="text-center">
+        <a class="btn btn-outline-dark mt-auto" href=" {% url 'books:detail_book' book.pk %}">Details</a>
+      </div>
+    </div>
+  </div>
+</div>

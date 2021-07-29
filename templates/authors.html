@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block head_content %}
+  <title>Authors</title>
+{% endblock head_content %}
+{% block content %}
+  <ul style="list-style: none; margin: 20px auto; text-align: center;">
+  {% for author in authors %}
+    <li>
+      <a href="{% url 'authors:books_by' author.pk %}" style="color: #212529;"><h2> {{ author.nick_name }} </h2></a>
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock content %}
